@@ -16,7 +16,7 @@ namespace SimpleProto.AI.BehaviourTrees
 
         public InVariable<float> Max { get; set; }
 
-        protected override NodeState OnRunning(ExecutionContext context)
+        protected override NodeState OnRunning(object context)
         {
             Output.Set(Random.Range(Min, Max));
             return NodeState.Success;

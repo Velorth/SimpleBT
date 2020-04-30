@@ -5,7 +5,7 @@ namespace SimpleProto.AI
 {
     public class Parallel : Composite
     {
-        protected override NodeState OnRunning(ExecutionContext agent)
+        protected override NodeState OnRunning(object agent)
         {
             throw new NotImplementedException();
         }

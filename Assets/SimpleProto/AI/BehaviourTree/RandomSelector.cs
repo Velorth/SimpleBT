@@ -6,7 +6,7 @@ namespace SimpleProto.AI.BehaviourTrees
     {
         private int _selectedIndex = -1;
         
-        protected override NodeState OnStart(ExecutionContext context)
+        protected override NodeState OnStart(object context)
         {
             if (Children.Count == 0)
                 return NodeState.Failure;
@@ -16,7 +16,7 @@ namespace SimpleProto.AI.BehaviourTrees
             return NodeState.Running;
         }
 
-        protected override NodeState OnRunning(ExecutionContext context)
+        protected override NodeState OnRunning(object context)
         {
             var child = Children[_selectedIndex];
             return child.Execute(context);

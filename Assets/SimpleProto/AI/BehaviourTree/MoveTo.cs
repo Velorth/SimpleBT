@@ -1,22 +1,22 @@
-using System;
 using UnityEngine;
 
 namespace SimpleProto.AI.BehaviourTrees
 {
-    public sealed class MoveTo : BaseBehaviourTreeNode
+    public sealed class MoveTo : BehaviourTreeNode<GameObject>
     {
         public InVariable<Vector3> Target { get; set; }
 
         public InVariable<float> Speed { get; set; } = 5f;
 
-        protected override NodeState OnRunning(ExecutionContext context)
+        protected override NodeState OnRunning(GameObject actor)
         {
-            var sc = (SimpleContext)context;
-            var transform = sc.Actor.transform;
+            var transform = actor.transform;
+            var position = transform.position;
 
-            transform.position = Vector3.MoveTowards(transform.position, Target, Speed * Time.deltaTime);
+            position = Vector3.MoveTowards(position, Target, Speed * Time.deltaTime);
 
-            var distance = Vector3.Distance(transform.position, Target);
+            transform.position = position;
+            var distance = Vector3.Distance(position, Target);
 
             return distance < 0.01f
                 ? NodeState.Success

@@ -4,12 +4,9 @@ using UnityEngine;
 public class BTAgent : MonoBehaviour
 {
     private IBehaviourTreeNode _tree;
-    private SimpleContext _context;
     
     private void Start()
     {
-        _context = new SimpleContext(gameObject);
-
         var moveTarget = new Variable<Vector3>();
         var waitTime = new Variable<float>();
 
@@ -28,6 +25,6 @@ public class BTAgent : MonoBehaviour
     
     private void Update()
     {
-        _tree.Execute(_context);
+        _tree.Execute(gameObject);
     }
 }

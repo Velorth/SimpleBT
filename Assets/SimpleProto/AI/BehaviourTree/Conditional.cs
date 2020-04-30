@@ -1,20 +1,21 @@
 ﻿using System;
+using SimpleProto.AI.BehaviourTrees;
 
-namespace SimpleProto.AI.BehaviourTrees
+namespace SimpleProto.AI
 {
     public class Conditional : Decorator
     {
-        public Predicate<ExecutionContext> Condition { get; set; }
+        public Predicate<object> Condition { get; set; }
 
-        protected override NodeState OnRunning(ExecutionContext context)
+        protected override NodeState OnRunning(object agent)
         {
             if (Child.State == NodeState.Failure || Child.State == NodeState.Success)
                 return Child.State;
 
-            if (Condition != null && !Condition(context))
+            if (Condition != null && !Condition(agent))
                 return NodeState.Failure;
 
-            Child.Execute(context);
+            Child.Execute(agent);
 
             return Child.State;
         }

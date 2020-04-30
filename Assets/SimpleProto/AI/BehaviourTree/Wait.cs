@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace SimpleProto.AI.BehaviourTrees
 {
     public sealed class Wait : BaseBehaviourTreeNode
@@ -11,18 +9,18 @@ namespace SimpleProto.AI.BehaviourTrees
         /// </summary>
         public InVariable<float> Time { get; set; }
 
-        protected override void OnReset()
+        protected override void OnReset(object context)
         {
             _endTime = -1;
         }
 
-        protected override NodeState OnStart(ExecutionContext context)
+        protected override NodeState OnStart(object context)
         {
             _endTime = UnityEngine.Time.time + Time;
             return NodeState.Running;
         }
 
-        protected override NodeState OnRunning(ExecutionContext context)
+        protected override NodeState OnRunning(object context)
         {
             return UnityEngine.Time.time < _endTime ? NodeState.Running : NodeState.Success;
         }

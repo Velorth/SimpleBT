@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
@@ -22,9 +21,9 @@ namespace SimpleProto.AI.BehaviourTrees
         {
         }
 
-        protected override void OnReset()
+        protected override void OnReset(object context)
         {
-            Child.Reset();
+            Child.Reset(context);
         }
 
         public void Add(IBehaviourTreeNode child)

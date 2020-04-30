@@ -1,4 +1,3 @@
-
 namespace SimpleProto.AI.BehaviourTrees
 {
     /// <summary>
@@ -6,16 +5,16 @@ namespace SimpleProto.AI.BehaviourTrees
     /// </summary>
     public sealed class RepeatUntilSuccess : Decorator
     {
-        protected override NodeState OnRunning(ExecutionContext actor)
+        protected override NodeState OnRunning(object context)
         {
             if (Child.State == NodeState.Failure)
             {
-                Child.Reset();
+                Child.Reset(context);
             }
 
             if (Child.State == NodeState.Ready || Child.State == NodeState.Running)
             {
-                Child.Execute(actor);
+                Child.Execute(context);
             }
 
             return Child.State == NodeState.Success

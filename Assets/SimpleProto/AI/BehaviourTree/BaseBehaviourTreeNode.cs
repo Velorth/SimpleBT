@@ -1,4 +1,4 @@
-﻿using System;
+﻿using JetBrains.Annotations;
 
 namespace SimpleProto.AI.BehaviourTrees
 {
@@ -10,10 +10,11 @@ namespace SimpleProto.AI.BehaviourTrees
         /// <summary>
         /// Resets the state of the node
         /// </summary>
-        public void Reset()
+        /// <param name="context"></param>
+        public void Reset(object context)
         {
             State = NodeState.Ready;
-            OnReset();
+            OnReset(context);
         }
 
         /// <summary>
@@ -21,7 +22,7 @@ namespace SimpleProto.AI.BehaviourTrees
         /// </summary>
         /// <param name="context">An actor</param>
         /// <returns>New state of the node</returns>
-        public NodeState Execute(ExecutionContext context)
+        public NodeState Execute(object context)
         {
             if (State == NodeState.Success || State == NodeState.Failure)
                 return State;
@@ -38,11 +39,11 @@ namespace SimpleProto.AI.BehaviourTrees
 
             if (State == NodeState.Success)
             {
-                OnCompleted();
+                OnSuccess(context);
             }
             else if (State == NodeState.Failure)
             {
-                OnFailed(context);
+                OnFailure(context);
             }
 
             return State;
@@ -53,29 +54,29 @@ namespace SimpleProto.AI.BehaviourTrees
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public void Cancel(ExecutionContext context)
+        public void Cancel(object context)
         {
             State = NodeState.Failure;
-            OnFailed(context);
+            OnFailure(context);
         }
 
-        protected virtual void OnCompleted()
+        protected virtual void OnSuccess([NotNull] object context)
         {
         }
 
-        protected virtual void OnFailed(ExecutionContext context)
+        protected virtual void OnFailure([NotNull] object context)
         {
         }
 
-        protected virtual void OnReset()
+        protected virtual void OnReset([NotNull] object context)
         {
         }
 
-        protected virtual NodeState OnStart(ExecutionContext context)
+        protected virtual NodeState OnStart([NotNull] object context)
         {
             return NodeState.Running;
         }
 
-        protected virtual NodeState OnRunning(ExecutionContext context) => NodeState.Failure;
+        protected virtual NodeState OnRunning([NotNull] object context) => NodeState.Failure;
     }
 }

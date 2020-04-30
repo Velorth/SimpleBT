@@ -6,14 +6,13 @@ namespace SimpleProto.AI.BehaviourTrees
     /// <summary>
     /// Rotates character to the target.
     /// </summary>
-    public class RotateTo : BaseBehaviourTreeNode
+    public class RotateTo : BehaviourTreeNode<GameObject>
     {
         public InVariable<Vector3> Target { get; set; }
         
-        protected override NodeState OnRunning(ExecutionContext context)
+        protected override NodeState OnRunning(GameObject actor)
         {
-            var sc = (SimpleContext) context;
-            var transform = sc.Actor.transform;
+            var transform = actor.transform;
 
             var look = Target - transform.position;
             look.y = 0;

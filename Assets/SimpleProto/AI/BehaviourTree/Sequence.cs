@@ -1,5 +1,3 @@
-using System;
-
 namespace SimpleProto.AI.BehaviourTrees
 {
     /// <summary>
@@ -11,7 +9,7 @@ namespace SimpleProto.AI.BehaviourTrees
     /// </remarks>
     public class Sequence : Composite
     {
-        protected override NodeState OnRunning(ExecutionContext context)
+        protected override NodeState OnRunning(object context)
         {
             for (var i = 0; i < Children.Count; ++i)
             {

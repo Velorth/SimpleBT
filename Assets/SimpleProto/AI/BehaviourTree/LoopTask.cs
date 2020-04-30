@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SimpleProto.AI.BehaviourTrees
+﻿namespace SimpleProto.AI.BehaviourTrees
 {
     public class Loop : Decorator
     {
@@ -10,13 +8,13 @@ namespace SimpleProto.AI.BehaviourTrees
 
         public bool RepeatInfinite { get; set; }
 
-        protected override void OnReset()
+        protected override void OnReset(object context)
         {
             _counter = 0;
-            base.OnReset();
+            base.OnReset(context);
         }
 
-        protected override NodeState OnRunning(ExecutionContext context)
+        protected override NodeState OnRunning(object context)
         {
             if (Child.State == NodeState.Success || Child.State == NodeState.Failure)
             {
@@ -25,7 +23,7 @@ namespace SimpleProto.AI.BehaviourTrees
                 {
                     return Child.State;
                 }
-                Child.Reset();
+                Child.Reset(context);
             }
 
             Child.Execute(context);

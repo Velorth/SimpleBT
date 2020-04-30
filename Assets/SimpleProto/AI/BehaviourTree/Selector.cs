@@ -1,13 +1,11 @@
-﻿using System;
-
-namespace SimpleProto.AI.BehaviourTrees
+﻿namespace SimpleProto.AI.BehaviourTrees
 {
     /// <summary>
     /// Selector task will be completed when any child is completed
     /// </summary>
     public class Selector : Composite
     {
-        protected override NodeState OnRunning(ExecutionContext context)
+        protected override NodeState OnRunning(object context)
         {
             for (var i = 0; i < Children.Count; ++i)
             {

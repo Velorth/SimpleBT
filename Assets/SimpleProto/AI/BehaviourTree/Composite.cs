@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
@@ -18,12 +17,12 @@ namespace SimpleProto.AI.BehaviourTrees
         [NotNull]
         public IList<IBehaviourTreeNode> Children { get { return _children; } }
 
-        protected override void OnReset()
+        protected override void OnReset(object context)
         {
             for (var i = 0; i < _children.Count; ++i)
             {
                 var child = _children[i];
-                child.Reset();
+                child.Reset(context);
             }
         }
 

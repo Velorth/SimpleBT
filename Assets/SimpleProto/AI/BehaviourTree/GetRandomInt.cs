@@ -1,5 +1,4 @@
-﻿using System;
-using Random = UnityEngine.Random;
+﻿using Random = UnityEngine.Random;
 
 namespace SimpleProto.AI.BehaviourTrees
 {
@@ -17,7 +16,7 @@ namespace SimpleProto.AI.BehaviourTrees
 
         public InVariable<int> Max { get; set; }
 
-        protected override NodeState OnRunning(ExecutionContext context)
+        protected override NodeState OnRunning(object context)
         {
             Output.Set(Random.Range(Min, Max));
             return NodeState.Success;

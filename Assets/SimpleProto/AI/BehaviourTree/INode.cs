@@ -12,19 +12,20 @@ namespace SimpleProto.AI.BehaviourTrees
         /// <summary>
         /// Resets node state to default
         /// </summary>
-        void Reset();
+        /// <param name="context"></param>
+        void Reset([NotNull] object context);
 
         /// <summary>
         /// Cancels node execution
         /// </summary>
         /// <param name="context"></param>
-        void Cancel(ExecutionContext context);
+        void Cancel([NotNull] object context);
 
         /// <summary>
         /// Performs iteration of node execution
         /// </summary>
         /// <param name="context"></param>
         /// <returns>New state of the node</returns>
-        NodeState Execute([NotNull]ExecutionContext context);
+        NodeState Execute([NotNull] object context);
     }
 }

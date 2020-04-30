@@ -2,7 +2,7 @@ namespace SimpleProto.AI.BehaviourTrees
 {
     public sealed class Invert : Decorator
     {
-        protected override NodeState OnRunning(ExecutionContext context)
+        protected override NodeState OnRunning(object context)
         {
             if (Child.State == NodeState.Ready || Child.State == NodeState.Running)
             {

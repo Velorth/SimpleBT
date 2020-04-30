@@ -56,8 +56,8 @@ The execution context can be an object of any type. If BT-node expects some spec
 
 ## Performance
 SimpleBT tries to balance between performance and usability. 
-It doesn't use generic dictionaries with string keys for blackboard memory and doesn't perform boxing valuetypes.
-But it still relies on interfaces and virtual methods for extensibility and downcasts for safity.
+It doesn't use generic dictionaries with string keys for blackboard memory and doesn't perform boxing on valuetypes.
+But it still relies on interfaces and virtual methods for extensibility and downcasts for safety.
 
 ## Future plans
 1. Behavior tree debugging.

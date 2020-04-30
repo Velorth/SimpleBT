@@ -7,7 +7,7 @@ The package provides several pre-defined most commonly used BT-nodes including c
 The project has been tested in Unity 2019.3. 
 
 ## Installation
-To install this package, add the following line to your `manifest.json` file located within your project's packages directory. For more details and troubleshooting of the Unity Packages manager, head over to the [Installation Guide](https://github.com/unity-packages/installation).
+To install this package, add the following line to your `manifest.json` file located within your project's packages directory.
 
 ```json
 "com.simpleproto.behaviourtrees": "git+https://github.com/Velorth/SimpleBT"

@@ -1,6 +1,6 @@
 namespace SimpleProto.AI.BehaviourTrees
 {
-    public sealed class Wait : BaseBehaviourTreeNode
+    public sealed class Wait : BehaviourTreeNode
     {
         private float _endTime;
 

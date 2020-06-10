@@ -7,7 +7,7 @@ namespace SimpleProto.AI.BehaviourTrees
     /// <summary>
     /// Base class for composite nodes with children
     /// </summary>
-    public abstract class Composite : BaseBehaviourTreeNode, IEnumerable<IBehaviourTreeNode>
+    public abstract class Composite : BehaviourTreeNode, IEnumerable<IBehaviourTreeNode>
     {
         private readonly List<IBehaviourTreeNode> _children = new List<IBehaviourTreeNode>();
 

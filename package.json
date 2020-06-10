@@ -1,6 +1,6 @@
 {
   "name": "com.simpleproto.behaviourtrees",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "displayName": "SimpleBT",
   "description": "Lightweight behaviour trees for Unity.",
   "unity": "2019.3",

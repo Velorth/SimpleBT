@@ -22,4 +22,19 @@ namespace SimpleProto.AI.BehaviourTrees
                 : NodeState.Running;
         }
     }
+
+    public sealed class RepeatWhileSuccess : Decorator
+    {
+        protected override NodeState OnRunning(object context)
+        {
+            if (Child.State == NodeState.Success)
+            {
+                Child.Reset(context);
+            }
+
+            Child.Execute(context);
+
+            return Child.State == NodeState.Failure ? NodeState.Failure : NodeState.Running;
+        }
+    }
 }

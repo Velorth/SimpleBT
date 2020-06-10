@@ -3,18 +3,18 @@
 namespace SimpleProto.AI.BehaviourTrees
 {
     /// <summary>
-    /// Assigns output variable with random integer value.
+    /// Assigns output variable with random float value
     /// </summary>
-    public class GetRandomInt : BaseBehaviourTreeNode
+    public class GetRandomFloat : BehaviourTreeNode
     {
         /// <summary>
         /// Output variable.
         /// </summary>
-        public OutVariable<int> Output { get; set; }
+        public OutVariable<float> Output { get; set; }
 
-        public InVariable<int> Min { get; set; }
+        public InVariable<float> Min { get; set; }
 
-        public InVariable<int> Max { get; set; }
+        public InVariable<float> Max { get; set; }
 
         protected override NodeState OnRunning(object context)
         {

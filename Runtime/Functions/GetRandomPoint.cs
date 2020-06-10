@@ -2,7 +2,7 @@
 
 namespace SimpleProto.AI.BehaviourTrees
 {
-    public class GetRandomPoint : BaseBehaviourTreeNode
+    public class GetRandomPoint : BehaviourTreeNode
     {
         public OutVariable<Vector3> Output { get; set; }
         public InVariable<float> Radius { get; set; } = 5f;

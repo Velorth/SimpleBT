@@ -4,6 +4,8 @@ using UnityEngine;
 public class BTAgent : MonoBehaviour
 {
     private IBehaviourTreeNode _tree;
+
+    public IBehaviourTreeNode BehaviourTree => _tree;
     
     private void Start()
     {
@@ -12,13 +14,10 @@ public class BTAgent : MonoBehaviour
 
         _tree = new RepeatForever
         {
-            new Sequence
-            {
-                new GetRandomPoint { Radius = 5, Output = moveTarget },
-                new MoveTo { Target = moveTarget },
-                new GetRandomFloat { Min = 0.5f, Max = 2f, Output = waitTime },
-                new Wait { Time = waitTime}
-            }
+            new GetRandomPoint { Radius = 5, Output = moveTarget },
+            new MoveTo { Target = moveTarget },
+            new GetRandomFloat { Min = 0.5f, Max = 2f, Output = waitTime },
+            new Wait { Time = waitTime }
         };
     }
 
